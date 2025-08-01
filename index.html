@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Page with Parameters</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #555;
+        }
+        .param-display {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello, World!</h1>
+    <p>This is a simple web page displaying parameters.</p>
+    <div class="param-display">
+        <p>ID Parameter: <span id="idParam">Not provided</span></p>
+        <p>Name Parameter: <span id="nameParam">Not provided</span></p>
+    </div>
+
+    <script>
+        // Function to get URL query parameters
+        function getQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                id: params.get('id'),
+                name: params.get('name')
+            };
+        }
+
+        // Get parameters and display them
+        const params = getQueryParams();
+        
+        // Display ID parameter (validate it's an integer)
+        const idDisplay = document.getElementById('idParam');
+        if (params.id && !isNaN(parseInt(params.id)) && Number.isInteger(parseFloat(params.id))) {
+            idDisplay.textContent = parseInt(params.id);
+        } else {
+            idDisplay.textContent = 'Invalid or missing ID';
+        }
+
+        // Display name parameter
+        const nameDisplay = document.getElementById('nameParam');
+        if (params.name) {
+            // Basic sanitization to prevent XSS
+            nameDisplay.textContent = params.name.replace(/[<>"'&]/g, '');
+        } else {
+            nameDisplay.textContent = 'No name provided';
+        }
+    </script>
+</body>
+</html>
