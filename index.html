@@ -34,9 +34,18 @@
     <div class="param-display">
         <p>ID Parameter: <span id="idParam">Not provided</span></p>
         <p>Name Parameter: <span id="nameParam">Not provided</span></p>
+
+        <button onclick="sendToApp()">Finish and Return</button>
     </div>
 
     <script>
+        function sendToApp() {
+            const id = params.id || '';
+            const name = encodeURIComponent(params.name || '') + ' is From web';
+            const url = `purchasetest://result?id=${id}&name=${name}`;
+            window.location.href = url;
+        }
+        
         // Function to get URL query parameters
         function getQueryParams() {
             const params = new URLSearchParams(window.location.search);
