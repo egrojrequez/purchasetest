@@ -61,6 +61,7 @@
         
             // 3. Encode the JSON string to base64
             const base64Data = btoa(jsonString);
+            console.log(base64Data);
         
             // 4. Construct the URL with the single base64 query parameter
             const url = `purchasetest://result?data=${base64Data}`;
