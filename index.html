@@ -47,26 +47,34 @@
         }
 
         function sendToApp2() {
-            // Assuming params.items is an array of objects like [{id: '1', name: 'Item A'}, {id: '2', name: 'Item B'}]
-            const items = params.items || [];
+            const id = params.id || '';
+            const name = params.name || '';
         
-            // 1. Create a JavaScript array of objects
-            const dataList = items.map(item => ({
-                id: item.id || '',
-                name: (item.name || '') + ' is From web'
-            }));
+            // Create a list of 'Option' objects
+            const optionsList = [
+                { age: '25', country: 'USA' },
+                { age: '30', country: 'Canada' },
+                { age: '35', country: 'Mexico' }
+            ];
         
-            // 2. Convert the array to a JSON string
-            const jsonString = JSON.stringify(dataList);
+            // Create a JavaScript object with the desired data, including the new 'options' list
+            const data = {
+                id: id,
+                name: name + ' is From web',
+                options: optionsList
+            };
         
-            // 3. Encode the JSON string to base64
+            // Convert the object to a JSON string
+            const jsonString = JSON.stringify(data);
+        
+            // Encode the JSON string to base64
             const base64Data = btoa(jsonString);
             console.log(base64Data);
-        
-            // 4. Construct the URL with the single base64 query parameter
+            
+            // Construct the URL with the single base64 query parameter
             const url = `purchasetest://result?data=${base64Data}`;
         
-            // 5. Navigate to the URL
+            // Navigate to the URL
             window.location.href = url;
         }
         
