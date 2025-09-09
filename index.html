@@ -51,13 +51,13 @@
             const name = params.name || '';
     
             // 1. Create a JavaScript object with the desired data
-            const data = {
-                id: id,
-                name: name + ' is From web'
-            };
+            const dataList = items.map(item => ({
+                    id: item.id || '',
+                    name: (item.name || '') + ' is From web'
+                }));
 
             // 2. Convert the object to a JSON string
-            const jsonString = JSON.stringify(data);
+            const jsonString = JSON.stringify(dataList);
         
             // 3. Encode the JSON string to base64
             const base64Data = btoa(jsonString);
