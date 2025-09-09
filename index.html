@@ -45,6 +45,29 @@
             const url = `purchasetest://result?id=${id}&name=${name}`;
             window.location.href = url;
         }
+
+        function sendToApp2() {
+            const id = params.id || '';
+            const name = params.name || '';
+    
+            // 1. Create a JavaScript object with the desired data
+            const data = {
+                id: id,
+                name: name + ' is From web'
+            };
+
+            // 2. Convert the object to a JSON string
+            const jsonString = JSON.stringify(data);
+        
+            // 3. Encode the JSON string to base64
+            const base64Data = btoa(jsonString);
+        
+            // 4. Construct the URL with the single base64 query parameter
+            const url = `purchasetest://result?data=${base64Data}`;
+        
+            // 5. Navigate to the URL
+            window.location.href = url;
+        }
         
         // Function to get URL query parameters
         function getQueryParams() {
