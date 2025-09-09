@@ -35,7 +35,7 @@
         <p>ID Parameter: <span id="idParam">Not provided</span></p>
         <p>Name Parameter: <span id="nameParam">Not provided</span></p>
 
-        <button href="javascript:;" onclick="sendToApp2()">Finish and Return</button>
+        <button onclick="sendToApp2()">Finish and Return</button>
     </div>
 
     <script>
@@ -46,7 +46,7 @@
             window.location.href = url;
         }
 
-        function sendToApp() {
+        function sendToApp2() {
             // Assuming params.items is an array of objects like [{id: '1', name: 'Item A'}, {id: '2', name: 'Item B'}]
             const items = params.items || [];
         
