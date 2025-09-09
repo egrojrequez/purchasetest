@@ -46,17 +46,17 @@
             window.location.href = url;
         }
 
-        function sendToApp2() {
-            const id = params.id || '';
-            const name = params.name || '';
-    
-            // 1. Create a JavaScript object with the desired data
+        function sendToApp() {
+            // Assuming params.items is an array of objects like [{id: '1', name: 'Item A'}, {id: '2', name: 'Item B'}]
+            const items = params.items || [];
+        
+            // 1. Create a JavaScript array of objects
             const dataList = items.map(item => ({
-                    id: item.id || '',
-                    name: (item.name || '') + ' is From web'
-                }));
-
-            // 2. Convert the object to a JSON string
+                id: item.id || '',
+                name: (item.name || '') + ' is From web'
+            }));
+        
+            // 2. Convert the array to a JSON string
             const jsonString = JSON.stringify(dataList);
         
             // 3. Encode the JSON string to base64
